@@ -3,7 +3,7 @@ import numpy as np
 import csv
 import os
 import cv2
-
+from skimage.transform import resize
 
 def read_csv(path):
     """Reads csv file and puts data into python dictionary"""
@@ -68,7 +68,7 @@ def crop_and_resize(bottom, right, left, top, image_array):
     """Crops images based on location their bounding boxes
     and rezises the crop to 32x32 pixels """
     crop_image = image_array[top:bottom, left:right]
-    new_image = scipy.misc.imresize(crop_image, (32, 32, 3))
+    new_image = resize(crop_image, (32, 32, 3))
     return new_image
 
 
