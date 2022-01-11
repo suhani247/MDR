@@ -1,7 +1,8 @@
 import numpy as np
 import scipy
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
+tf.disable_v2_behavior()
 
 def bias_variable(name, shape):
     initial = tf.constant(0.1, shape=shape, name=name)
