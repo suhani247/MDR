@@ -2,6 +2,7 @@ import scipy.misc
 import numpy as np
 import csv
 import os
+import cv2
 
 
 def read_csv(path):
@@ -84,7 +85,7 @@ def get_x(path):
     number_of_images = len(list_of_image_names)
     x = np.empty((number_of_images, 32, 32, 3))
     for image_name in list_of_image_names:
-        image_array = scipy.misc.imread(path + "/" + image_name, flatten=False)
+        image_array = cv2.imread(path + "/" + image_name, flatten=False)
         bottom, right, left, top = get_overall_bounding_box(dict_csv, image_name)
         updated_image = crop_and_resize(bottom, right, left, top, image_array)
         x[count] = updated_image
